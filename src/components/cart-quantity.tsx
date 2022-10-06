@@ -1,15 +1,11 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
+import {StyleSheet, TextStyle} from 'react-native';
 import styled from '@emotion/native';
 
 import {Typography} from './typography';
+import {ICartProps} from './cart';
 
-//
-//
-
-export const CartQuantity: React.FC<{
-  quantity: any;
-  update: Dispatch<SetStateAction<number>>;
-}> = ({quantity, update}) => {
+export const CartQuantity: React.FC<ICartProps> = ({quantity, update}) => {
   return (
     <QuantityContainer>
       <React.Fragment>
@@ -19,9 +15,7 @@ export const CartQuantity: React.FC<{
           <Typography color="#522973">+</Typography>
         </QuantityButton>
 
-        <Typography style={{textAlign: 'center', flex: 1}}>
-          {quantity}
-        </Typography>
+        <Typography style={styles.quantity}>{quantity}</Typography>
 
         <QuantityButton
           onPress={() => update(quantity + 1)}
@@ -33,8 +27,16 @@ export const CartQuantity: React.FC<{
   );
 };
 
-//
-//
+interface IStyles {
+  quantity: TextStyle;
+}
+
+const styles = StyleSheet.create<IStyles>({
+  quantity: {
+    textAlign: 'center',
+    flex: 1,
+  },
+});
 
 const QuantityButton = styled.TouchableHighlight({
   alignItems: 'center',

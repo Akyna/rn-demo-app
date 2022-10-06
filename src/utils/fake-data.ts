@@ -5,14 +5,14 @@ import {IListItem} from '../screens/list';
 //
 //
 
-const list_data: IListItem[] = [];
+const LIST_DATA: IListItem[] = [];
 
 for (let index = 0; index < 1500; index++) {
   const price = faker.commerce.price();
   const priceInt = parseFloat(faker.commerce.price());
 
-  list_data.push({
-    id: index,
+  LIST_DATA.push({
+    id: index.toString(),
     name: faker.commerce.productName(),
     description: faker.commerce.productDescription(),
     price: price,
@@ -24,4 +24,4 @@ for (let index = 0; index < 1500; index++) {
   });
 }
 
-export default list_data;
+export default LIST_DATA;

@@ -1,18 +1,18 @@
 import React from 'react';
+import {StyleSheet, ViewStyle} from 'react-native';
 import styled from '@emotion/native';
 
 import {Typography} from './typography';
 
-//
-//
-
-export const DetailsLine: React.FC<{
-  label?: React.ReactNode;
+export interface IDetailsLineProps {
+  label: string;
   children: string;
-}> = ({label, children}) => {
+}
+
+export const DetailsLine: React.FC<IDetailsLineProps> = ({label, children}) => {
   return (
     <DetailsLineContainer>
-      <Typography fontSize={14} style={{marginRight: 16}} weight="medium">
+      <Typography fontSize={14} style={styles.label} weight="medium">
         {label}
       </Typography>
 
@@ -21,8 +21,15 @@ export const DetailsLine: React.FC<{
   );
 };
 
-//
-//
+interface IStyles {
+  label: ViewStyle;
+}
+
+const styles = StyleSheet.create<IStyles>({
+  label: {
+    marginRight: 16,
+  },
+});
 
 const DetailsLineContainer = styled.View({
   marginVertical: 5,
